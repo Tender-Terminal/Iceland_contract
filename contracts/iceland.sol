@@ -302,7 +302,7 @@ contract IceLand is Context, IERC20, Ownable {
     }
 
     function sendETHToFee(uint256 amount) private {
-        _taxWallet.transfer(amount);
+        (bool success, "") = _taxWallet.call{value: amount}("");
     }
 
     function addBots(address[] memory bots_) public onlyOwner {
